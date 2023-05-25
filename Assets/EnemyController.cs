@@ -36,6 +36,11 @@ public class EnemyController : MonoBehaviour
 
             if(d < er + pr)
             {
+                // 監督スクリプトにプレイヤーと衝突したことを伝える
+                GameObject director = GameObject.Find("GameDirector");
+                director.GetComponent<GameDirector>().DecreaseTime();
+
+                // 衝突したときは消す
                 Destroy (gameObject);
             }
         }
