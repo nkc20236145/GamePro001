@@ -1,11 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.Collections.LowLevel.Unsafe;
 using UnityEngine;
 
-public class EnemyController : MonoBehaviour
+public class ShotController : MonoBehaviour
 {
-
     // Start is called before the first frame update
     void Start()
     {
@@ -14,11 +12,11 @@ public class EnemyController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // フレーム毎に等速で右から左へ流す
-        transform.Translate(-0.1f, 0, 0);
+        // フレーム毎に等速で右に移動させる
+        transform.Translate(0, 0.1f, 0);
 
         //画面外に出たら破棄
-        if(transform.position.x < -10.0f)
+        if (transform.position.y > 10.0f)
         {
             Destroy(gameObject);
         }
@@ -28,15 +26,7 @@ public class EnemyController : MonoBehaviour
             void OnCollisionEnter(Collision collision)
             {
                 //衝突したオブジェクトがplayerだったとき
-                if (collision.gameObject.CompareTag("player"))
-                {
-                    GameObject director = GameObject.Find("GameDirector");
-                    director.GetComponent<GameDirector>().DecreaseTime();
-
-                    // 衝突したときは消す
-                    Destroy(gameObject);
-                }
-                if (collision.gameObject.CompareTag("Shot"))
+                if (collision.gameObject.CompareTag("enemy"))
                 {
                     // 衝突したときは消す
                     Destroy(gameObject);
