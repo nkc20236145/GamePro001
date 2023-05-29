@@ -7,6 +7,11 @@ public class ShotGenerator : MonoBehaviour
     public GameObject shotPrefab;
     GameObject player;
 
+    void Start()
+    {
+        this.player = GameObject.Find("player");
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -14,7 +19,7 @@ public class ShotGenerator : MonoBehaviour
         {
             GameObject go  = Instantiate(shotPrefab);
             Vector3 playerPos = this.player.transform.position;
-            go.transform.position = new Vector3(playerPos.x, playerPos.y + 1, transform.position.z);
+            go.transform.position = new Vector3(playerPos.x + 1, playerPos.y, transform.position.z);
 
         }
     }

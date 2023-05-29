@@ -22,26 +22,20 @@ public class EnemyController : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
 
-        // 当たり判定
+    // 当たり判定
+    public void OnTriggerEnter2D(Collider2D collision)
+    {
+        //衝突したオブジェクトがplayerだったとき
+        if (collision.gameObject.CompareTag("player"))
         {
-            void OnCollisionEnter(Collision collision)
-            {
-                //衝突したオブジェクトがplayerだったとき
-                if (collision.gameObject.CompareTag("player"))
-                {
-                    GameObject director = GameObject.Find("GameDirector");
-                    director.GetComponent<GameDirector>().DecreaseTime();
+            GameObject director = GameObject.Find("GameDirector");
+            director.GetComponent<GameDirector>().DecreaseTime2();
 
-                    // 衝突したときは消す
-                    Destroy(gameObject);
-                }
-                if (collision.gameObject.CompareTag("Shot"))
-                {
-                    // 衝突したときは消す
-                    Destroy(gameObject);
-                }
-            }
+            // 衝突したときは消す
+            Destroy(gameObject);
         }
     }
+
 }
