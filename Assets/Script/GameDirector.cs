@@ -24,13 +24,13 @@ public class GameDirector : MonoBehaviour
     {
         DecreaseTime();
 
-        if (this.timeGauge.GetComponent<Image>().fillAmount < 0)   // タイムゲージがゼロになったらだと思うけどわからない
+        if (this.timeGauge.GetComponent<Image>().fillAmount == 0)   // タイムゲージがゼロになったらシーン遷移
         {
             SceneManager.LoadScene("TimeUp");
         }
 
-        this.dis += Time.deltaTime / 0.7f;
-        this.Distance.GetComponent<TextMeshProUGUI>().text =this.dis.ToString("F1") + "m";
+        this.dis += Time.deltaTime / 0.7f;　　// 飛行距離を取得
+        this.Distance.GetComponent<TextMeshProUGUI>().text =this.dis.ToString("F1") + "km";   // 飛行距離を表示
     }
 
     public void DecreaseTime()
