@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemyGenerator : MonoBehaviour
 {
     public GameObject EnemyPrefab;
-    float span = 0.7f;
+    float span = 0.3f;   // “G‚ªoŒ»‚·‚éŠÔŠu
     float delta = 0;
 
     // Update is called once per frame
@@ -16,7 +16,7 @@ public class EnemyGenerator : MonoBehaviour
         {
             this.delta = 0;
             GameObject go = Instantiate(EnemyPrefab);
-            int py = Random.Range(-4, 4);
+            int py = Random.Range(-4, 4);       // “G‚ªoŒ»‚·‚éY²‚Ì”ÍˆÍ
             go.transform.position = new Vector3(9, py, 0);
         }
     }

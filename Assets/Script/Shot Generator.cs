@@ -15,9 +15,12 @@ public class ShotGenerator : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // Fire3を押したら弾を撃つ
         if(Input.GetButtonDown("Fire3"))
         {
             GameObject go  = Instantiate(shotPrefab);
+
+            // プレイヤーの前に弾を出現させる
             Vector3 playerPos = this.player.transform.position;
             go.transform.position = new Vector3(playerPos.x + 1, playerPos.y, transform.position.z);
 

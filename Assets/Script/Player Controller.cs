@@ -10,6 +10,8 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         Application.targetFrameRate = 60;
+
+        // アニメーターコンポーネントをanimator変数に保存
         this.animator = GetComponent<Animator>();
     }
 
@@ -21,13 +23,18 @@ public class PlayerController : MonoBehaviour
         float speed = 0.15f;
         transform.position += new Vector3(x * speed, y * speed, 0);
 
-        if(y < 0)
+        // プレイヤーにアニメーションをつける
+        if(y == 0)
         {
-            this.animator.SetTrigger("Right Trigger");
+            this.animator.Play("Flyt Animation");
         }
-        if(y > 0)
+        else if(y == 1)
         {
-            this.animator.SetTrigger("Left Trigger");
+            this.animator.Play("Left Animation");
+        }
+        else
+        {
+            this.animator.Play("Right Animation");
         }
 
     }

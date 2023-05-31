@@ -16,6 +16,7 @@ public class GameDirector : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        // それぞれのオブジェクトを取得
         this.timeGauge = GameObject.Find("timeGauge");
         this.Distance = GameObject.Find("Distance");
     }
@@ -26,11 +27,11 @@ public class GameDirector : MonoBehaviour
 
         if (this.timeGauge.GetComponent<Image>().fillAmount == 0)   // タイムゲージがゼロになったらシーン遷移
         {
-            SceneManager.LoadScene("TimeUp");
+            SceneManager.LoadScene("StartScene");
         }
 
         this.dis += Time.deltaTime / 0.7f;　　// 飛行距離を取得
-        this.Distance.GetComponent<TextMeshProUGUI>().text =this.dis.ToString("F1") + "km";   // 飛行距離を表示
+        this.Distance.GetComponent<TextMeshProUGUI>().text = this.dis.ToString("F1") + "km";   // 飛行距離を表示
     }
 
     public void DecreaseTime()
@@ -46,5 +47,11 @@ public class GameDirector : MonoBehaviour
     {
         // Enemyと衝突したときに時間が減るようにEnemyComtrollerに呼び出してもらうためのもの
         this.timeGauge.GetComponent<Image>().fillAmount -= 10.0f / 100.0f;
+    }
+
+    public void DistanceResult()
+    {
+        this.dis += Time.deltaTime / 0.7f;　　// 飛行距離を取得
+        this.Distance.GetComponent<TextMeshProUGUI>().text = this.dis.ToString("F1") + "km";   // 飛行距離を表示
     }
 }
