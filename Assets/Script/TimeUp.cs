@@ -6,18 +6,23 @@ using UnityEngine.SceneManagement;
 
 public class TimeUp : MonoBehaviour
 {
+    GameObject outCome;
+    GameObject result;
+
     // Start is called before the first frame update
     void Start()
     {
+        this.outCome = GameObject.Find("OutCome");
+        this.result = GameObject.Find("GameDirector");
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        GameObject result = GameObject.Find("GameDirector");
-        result.GetComponent<GameDirector>().DistanceResult();
+        this.result.GetComponent<GameDirector>().DistanceResult();
 
-        GetComponent<TextMeshProUGUI>().text = "TIME UP !!!" + "\n" + "Result : " + result + "\n" + "Z or Buttom0\r\nStart";
+        this.outCome.GetComponent<TextMeshProUGUI>().text = "TIME UP !!!" + "\n" + "Result : " + this.result + "\n" + "Z or Buttom0\r\nStart";
 
 
         // Fire1ÇâüÇµÇΩÇÁÉVÅ[ÉìëJà⁄

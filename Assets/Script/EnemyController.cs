@@ -33,6 +33,9 @@ public class EnemyController : MonoBehaviour
             GameObject director = GameObject.Find("GameDirector");
             director.GetComponent<GameDirector>().DecreaseTime2();
 
+            // 当たった時に爆発するエフェクトが発生
+            GetComponent<ParticleSystem>().Play();
+
             // 衝突したときは消す
             Destroy(gameObject);
         }
