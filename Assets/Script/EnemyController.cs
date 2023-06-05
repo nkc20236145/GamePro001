@@ -27,6 +27,8 @@ public class EnemyController : MonoBehaviour
     // 当たり判定
     public void OnTriggerEnter2D(Collider2D collision)
     {
+        
+
         //衝突したオブジェクトがplayerだったとき
         if (collision.gameObject.CompareTag("player"))
         {
@@ -38,7 +40,17 @@ public class EnemyController : MonoBehaviour
 
             // 衝突したときは消す
             Destroy(gameObject);
+             
+        }
+
+        //衝突したオブジェクトがShotだったとき
+        if (collision.gameObject.CompareTag("Shot"))
+        {
+            // 衝突したら自分が消える
+            Destroy(gameObject);
+
+            // 衝突相手が消える
+            Destroy(collision.gameObject);
         }
     }
-
 }

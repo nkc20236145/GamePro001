@@ -22,16 +22,4 @@ public class ShotController : MonoBehaviour
         }
     }
 
-    // “–‚½‚è”»’è       
-    public void OnTriggerEnter2D(Collider2D collision)
-    {
-        if(collision.gameObject.CompareTag("enemy"))
-        {
-            // Õ“Ë‚µ‚½‚ç©•ª‚ªÁ‚¦‚é
-            Destroy(gameObject);
-
-            // Õ“Ë‘Šè‚ªÁ‚¦‚é
-            Destroy(collision.gameObject);
-        }
-    }
 }
